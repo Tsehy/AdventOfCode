@@ -1,31 +1,28 @@
 ﻿public class Day01 : Day
 {
-    private List<Elf> elves { get; set; }
+    private List<int> elves { get; set; }
 
     public Day01() : base("Day01")
     {
-        elves = new List<Elf>();
+        elves = new List<int>();
 
         ExtractData();
 
-        elves = elves.OrderByDescending(e => e.TotalCalorie).ToList();
+        elves = elves.OrderByDescending(e => e).ToList();
     }
 
     public override void Part1()
 	{
 		Console.WriteLine("Part 1");
 
-        Console.WriteLine($"Maximum amount of calories carried: {elves[0].TotalCalorie}");
+        Console.WriteLine($"Maximum amount of calories carried: {elves[0]}");
 	}
 
     public override void Part2()
 	{
         Console.WriteLine("Part 2");
 
-        int totalCalories = elves.Take(3)
-            .Select(e => e.TotalCalorie)
-            .Sum()
-        ;
+        int totalCalories = elves.Take(3).Sum();
 
         Console.WriteLine($"Maximum amount of calories carried by the top 3: {totalCalories}");
     }
@@ -34,22 +31,19 @@
     private void ExtractData()
     {
         int index = 0;
-        Elf elf = new Elf();
+        elves.Add(index);
 
-        while (index < input.Length)
+        foreach (string calorie in input)
         {
-            if (input[index] != "")
+            if (calorie != "")
             {
-                int calorie = int.Parse(input[index]);
-                elf.Add(calorie);
+                elves[index] += int.Parse(calorie);
             }
             else
             {
-                elves.Add(elf);
-                elf = new Elf();
+                elves.Add(0);
+                index++;
             }
-
-            index++;
         }
     }
     #endregion
