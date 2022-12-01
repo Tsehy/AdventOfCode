@@ -1,4 +1,4 @@
-﻿public class Day01 : Day
+﻿public class Day01 : _2022Day
 {
     private List<int> elves { get; set; }
 

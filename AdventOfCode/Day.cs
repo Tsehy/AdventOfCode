@@ -2,9 +2,9 @@
 {
     public string[] input { get; set; }
 
-	public Day(string folderName)
+	public Day(string yearName, string folderName)
 	{
-        string path = Path.Combine(Directory.GetCurrentDirectory(), $@"..\..\..\{folderName}\input.txt");
+        string path = Path.Combine(Directory.GetCurrentDirectory(), $@"..\..\..\{yearName}\{folderName}\input.txt");
 
         input = File.ReadAllLines(path);
 	}
