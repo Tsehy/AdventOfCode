@@ -1,8 +1,8 @@
-﻿public class Day01 : _2022Day
+﻿public class _2022Day01 : _2022Day
 {
     private List<int> elves { get; set; }
 
-    public Day01() : base("Day01")
+    public _2022Day01() : base("Day01")
     {
         elves = new List<int>();
 
@@ -13,18 +13,18 @@
 
     public override void Part1()
 	{
-		Console.WriteLine("Part 1");
+		Console.WriteLine("Part 1\n------");
 
-        Console.WriteLine($"Maximum amount of calories carried: {elves[0]}");
+        Console.WriteLine($"Maximum amount of calories carried: {elves[0]}\n");
 	}
 
     public override void Part2()
 	{
-        Console.WriteLine("Part 2");
+        Console.WriteLine("Part 2\n------");
 
         int totalCalories = elves.Take(3).Sum();
 
-        Console.WriteLine($"Maximum amount of calories carried by the top 3: {totalCalories}");
+        Console.WriteLine($"Maximum amount of calories carried by the top 3: {totalCalories}\n");
     }
 
     #region Private methods
