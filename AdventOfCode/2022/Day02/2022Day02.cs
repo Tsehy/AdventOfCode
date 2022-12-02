@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Sources;
-
-public class _2022Day02 : _2022Day
+﻿public class _2022Day02 : _2022Day
 {
     private List<Tuple<char, char>> rounds = new(); // 1st opponent, 2nd guide
 
@@ -18,7 +11,7 @@ public class _2022Day02 : _2022Day
     {
         base.Part1();
 
-        int totalScore = rounds.Select(r => CalculateRound1(r)).Sum();
+        int totalScore = rounds.Select(r => WithWrongGuide(r)).Sum();
 
         Console.WriteLine($"The score you would get following the incorrect guide: {totalScore}\n");
     }
@@ -27,7 +20,7 @@ public class _2022Day02 : _2022Day
     {
         base.Part2();
 
-        int totalScore = rounds.Select(r => CalculateRound2(r)).Sum();
+        int totalScore = rounds.Select(r => WithCorrectGuide(r)).Sum();
 
         Console.WriteLine($"The score you would get following the correct guide: {totalScore}\n");
     }
@@ -42,7 +35,7 @@ public class _2022Day02 : _2022Day
         }
     }
 
-    private int CalculateRound1(Tuple<char, char> round)
+    private int WithWrongGuide(Tuple<char, char> round)
     {
         int score = "-XYZ".IndexOf(round.Item1);
 
@@ -61,7 +54,7 @@ public class _2022Day02 : _2022Day
         return score;
     }
 
-    private int CalculateRound2(Tuple<char, char> round)
+    private int WithCorrectGuide(Tuple<char, char> round)
     {
         int score = 0;
         int opponentId = "-ABC".IndexOf(round.Item1);
