@@ -13,14 +13,14 @@
 
     public override void Part1()
 	{
-		Console.WriteLine("Part 1\n------");
+        base.Part1();
 
         Console.WriteLine($"Maximum amount of calories carried: {elves[0]}\n");
 	}
 
     public override void Part2()
 	{
-        Console.WriteLine("Part 2\n------");
+        base.Part2();
 
         int totalCalories = elves.Take(3).Sum();
 
