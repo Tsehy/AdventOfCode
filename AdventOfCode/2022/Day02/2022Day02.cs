@@ -17,14 +17,14 @@ public class _2022Day02 : _2022Day
 
     public override void Part1()
     {
-        //base.Part1();
+        base.Part1();
 
         Console.WriteLine($"The score you would get following the incorrect guide: {CalculateGames1(opponent, guide)}\n");
     }
 
     public override void Part2()
     {
-        //base.Part2();
+        base.Part2();
 
         Console.WriteLine($"The score you would get following the correct guide: {CalculateGames2(opponent, guide)}\n");
     }
