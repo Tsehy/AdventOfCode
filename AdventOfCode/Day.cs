@@ -11,10 +11,10 @@
 
 	public virtual void Part1()
 	{
-		throw new NotImplementedException();
-	}
-	public virtual void Part2()
+        Console.WriteLine("Part 1\n------");
+    }
+    public virtual void Part2()
 	{
-		throw new NotImplementedException();
-	}
+        Console.WriteLine("Part 2\n------");
+    }
 }
