@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-public class _2022Day03 : _2022Day
+﻿public class _2022Day03 : _2022Day
 {
     private List<Tuple<string, string>> bagpacks= new();
     private List<Tuple<string, string, string>> groups = new();
@@ -21,7 +15,7 @@ public class _2022Day03 : _2022Day
 
         int sumPriority = bagpacks.Select(b => b.Item1.Where(c => b.Item2.Contains(c)).Select(c => GetPriority(c)).First()).Sum();
 
-        Console.WriteLine($"The totaly priority of the elements that appear in both compartments: {sumPriority}");
+        Console.WriteLine($"The totaly priority of the elements that appear in both compartments: {sumPriority}\n");
     }
 
     public override void Part2()
@@ -30,8 +24,7 @@ public class _2022Day03 : _2022Day
 
         int sumGroupPriority = groups.Select(g => g.Item1.Where(c => g.Item2.Contains(c) && g.Item3.Contains(c)).Select(c => GetPriority(c)).First()).Sum();
 
-        Console.WriteLine($"The totaly priority of the groups: {sumGroupPriority}");
-
+        Console.WriteLine($"The totaly priority of the groups: {sumGroupPriority}\n");
     }
 
     #region Private methods
