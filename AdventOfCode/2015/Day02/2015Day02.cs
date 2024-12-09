@@ -1,6 +1,6 @@
 ﻿internal class _2015Day02 : _2015Day
 {
-    private List<(int length, int width, int height)> boxes;
+    private readonly List<(int length, int width, int height)> boxes;
 
     public _2015Day02() : base("Day02")
     {
@@ -33,7 +33,7 @@
         int totalRibbon = 0;
         foreach(var (length, width, height) in boxes)
         {
-            int ribbonForBox = 2 * (length + width + height) - 2 * Math.Max(Math.Max(length, width), height),
+            int ribbonForBox = 2 * (length + width + height - Math.Max(Math.Max(length, width), height)),
                 ribbonForBow = length * width * height;
 
             totalRibbon += ribbonForBow + ribbonForBox;
