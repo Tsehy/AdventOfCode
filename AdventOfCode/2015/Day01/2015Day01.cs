@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+internal class _2015Day01 : _2015Day
+{
+    private string floorInstruction;
+
+    public _2015Day01() : base("Day01")
+    {
+        floorInstruction = input[0];
+    }
+
+    public override void Part1()
+    {
+        base.Part1();
+
+        int finalFloor = floorInstruction.Sum(c => c == '(' ? 1 : -1);
+
+        Console.WriteLine($"Final floor: {finalFloor}\n");
+    }
+
+    public override void Part2()
+    {
+        base.Part2();
+
+        int currentFloor = 0,
+            currentPosition = 1;
+
+        foreach (char c in floorInstruction)
+        {
+            currentFloor += c == '(' ? 1 : -1;
+            if (currentFloor == -1)
+            {
+                break;
+            }
+            currentPosition++;
+        }
+
+        Console.WriteLine($"First time entering basement: {currentPosition}. position\n");
+    }
+}
