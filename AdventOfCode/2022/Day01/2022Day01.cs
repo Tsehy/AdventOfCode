@@ -1,50 +1,53 @@
-﻿public class _2022Day01 : _2022Day
+﻿namespace AdventOfCode
 {
-    private List<int> elves { get; set; }
-
-    public _2022Day01() : base("Day01")
+    public class _2022Day01 : _2022Day
     {
-        elves = new List<int>();
+        private readonly List<int> Elves;
 
-        ExtractData();
-
-        elves = elves.OrderByDescending(e => e).ToList();
-    }
-
-    public override void Part1()
-	{
-        base.Part1();
-
-        Console.WriteLine($"Maximum amount of calories carried: {elves[0]}\n");
-	}
-
-    public override void Part2()
-	{
-        base.Part2();
-
-        int totalCalories = elves.Take(3).Sum();
-
-        Console.WriteLine($"Maximum amount of calories carried by the top 3: {totalCalories}\n");
-    }
-
-    #region Private methods
-    private void ExtractData()
-    {
-        int index = 0;
-        elves.Add(index);
-
-        foreach (string calorie in input)
+        public _2022Day01() : base("Day01")
         {
-            if (calorie != "")
+            Elves = new List<int>();
+
+            ExtractData();
+
+            Elves = Elves.OrderByDescending(e => e).ToList();
+        }
+
+        public override void Part1()
+        {
+            base.Part1();
+
+            Console.WriteLine($"Maximum amount of calories carried: {Elves[0]}\n");
+        }
+
+        public override void Part2()
+        {
+            base.Part2();
+
+            int totalCalories = Elves.Take(3).Sum();
+
+            Console.WriteLine($"Maximum amount of calories carried by the top 3: {totalCalories}\n");
+        }
+
+        #region Private methods
+        private void ExtractData()
+        {
+            int index = 0;
+            Elves.Add(index);
+
+            foreach (string calorie in Input)
             {
-                elves[index] += int.Parse(calorie);
-            }
-            else
-            {
-                elves.Add(0);
-                index++;
+                if (calorie != "")
+                {
+                    Elves[index] += int.Parse(calorie);
+                }
+                else
+                {
+                    Elves.Add(0);
+                    index++;
+                }
             }
         }
+        #endregion
     }
-    #endregion
 }
