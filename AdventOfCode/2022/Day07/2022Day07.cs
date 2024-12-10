@@ -1,103 +1,104 @@
-﻿using Microsoft.VisualBasic;
-
-public class _2022Day07 : _2022Day
+﻿namespace AdventOfCode
 {
-    private FilePath FileSystem;
-    private List<int> FolderSizes;
-
-    public _2022Day07() : base("Day07")
+    public class _2022Day07 : _2022Day
     {
-        FileSystem = ExtractFileSystem();
-        FolderSizes = GetFoldersList(FileSystem);
-    }
+        private readonly FilePath FileSystem;
+        private readonly List<int> FolderSizes;
 
-    public override void Part1()
-    {
-        base.Part1();
-
-        int totalFolderSize = FolderSizes
-            .Where(f => f <= 100000)
-            .Sum()
-        ;
-
-        Console.WriteLine($"Total size of the small directories: {totalFolderSize}\n");
-    }
-
-    public override void Part2()
-    {
-        base.Part2();
-
-        int spaceToFree = (FileSystem.Size ?? 0) - 40000000;
-
-        int smallestDirectoryToDelete = Convert.ToInt32(FolderSizes.Where(f => f >= spaceToFree).Min());
-
-        Console.WriteLine($"Smallest directory to delete: {smallestDirectoryToDelete}\n");
-    }
-
-    #region Private methods
-    private FilePath ExtractFileSystem()
-    {
-        FilePath system = new("/", true);
-        FilePath? currentLocation = system;
-        int currentLine = 1;
-        
-        while (currentLine < input.Length)
+        public _2022Day07() : base("Day07")
         {
-            string[] output = input[currentLine].Split(' ');
+            FileSystem = ExtractFileSystem();
+            FolderSizes = GetFoldersList(FileSystem);
+        }
 
-            switch (output[0])
+        public override void Part1()
+        {
+            base.Part1();
+
+            int totalFolderSize = FolderSizes
+                .Where(f => f <= 100000)
+                .Sum()
+            ;
+
+            Console.WriteLine($"Total size of the small directories: {totalFolderSize}\n");
+        }
+
+        public override void Part2()
+        {
+            base.Part2();
+
+            int spaceToFree = (FileSystem.Size ?? 0) - 40000000;
+
+            int smallestDirectoryToDelete = Convert.ToInt32(FolderSizes.Where(f => f >= spaceToFree).Min());
+
+            Console.WriteLine($"Smallest directory to delete: {smallestDirectoryToDelete}\n");
+        }
+
+        #region Private methods
+        private FilePath ExtractFileSystem()
+        {
+            FilePath system = new("/", true);
+            FilePath? currentLocation = system;
+            int currentLine = 1;
+
+            while (currentLine < Input.Length)
             {
-                case "$": // command
-                    if (output[1] == "cd") // the other command is ls, which does nothing to the current folder
-                    {
-                        if (output[2] != "..")
-                        {
-                            currentLocation = currentLocation?.Files.Find(f => f.Name == output[2]) ?? currentLocation;
-                        }
-                        else
-                        {
-                            currentLocation = currentLocation?.Parent ?? currentLocation;
-                        }
-                    }
-                    break;
+                string[] output = Input[currentLine].Split(' ');
 
-                case "dir": // directory
-                    FilePath folder = new(output[1], true);
-                    currentLocation?.AddFile(folder);
-                    break;
+                switch (output[0])
+                {
+                    case "$": // command
+                        if (output[1] == "cd") // the other command is ls, which does nothing to the current folder
+                        {
+                            if (output[2] != "..")
+                            {
+                                currentLocation = currentLocation?.Files.Find(f => f.Name == output[2]) ?? currentLocation;
+                            }
+                            else
+                            {
+                                currentLocation = currentLocation?.Parent ?? currentLocation;
+                            }
+                        }
+                        break;
 
-                default: // file
-                    FilePath file = new(output[1], false)
-                    {
-                        Size = Convert.ToInt32(output[0])
-                    };
-                    currentLocation?.AddFile(file);
-                    break;
+                    case "dir": // directory
+                        FilePath folder = new(output[1], true);
+                        currentLocation?.AddFile(folder);
+                        break;
+
+                    default: // file
+                        FilePath file = new(output[1], false)
+                        {
+                            Size = Convert.ToInt32(output[0])
+                        };
+                        currentLocation?.AddFile(file);
+                        break;
+                }
+
+                currentLine++;
             }
 
-            currentLine++;
+            return system;
         }
 
-        return system;
-    }
-
-    private static List<int> GetFoldersList(FilePath path)
-    {
-        List<int> list = new();
-
-        if (!path.IsFolder)
+        private static List<int> GetFoldersList(FilePath path)
         {
+            List<int> list = new();
+
+            if (!path.IsFolder)
+            {
+                return list;
+            }
+
+            list.Add(path.Size ?? 0);
+
+            foreach (FilePath file in path.Files)
+            {
+                list = list.Concat(GetFoldersList(file)).ToList();
+            }
+
             return list;
         }
-
-        list.Add(path.Size ?? 0);
-
-        foreach (FilePath file in path.Files)
-        {
-            list = list.Concat(GetFoldersList(file)).ToList();
-        }
-
-        return list;
+        #endregion
     }
-    #endregion
 }

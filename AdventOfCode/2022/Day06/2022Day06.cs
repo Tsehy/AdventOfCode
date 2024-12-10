@@ -1,51 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-internal class _2022Day06 : _2022Day
+﻿namespace AdventOfCode
 {
-    private string message;
-
-    public _2022Day06() : base("Day06")
+    internal class _2022Day06 : _2022Day
     {
-        message = input[0];
-    }
+        private readonly string message;
 
-    public override void Part1()
-    {
-        base.Part1();
-
-        int marker = GetMarkerIndex(4);
-
-        Console.WriteLine($"The short marker appears after {marker} characters.\n");
-    }
-
-    public override void Part2()
-    {
-        base.Part2();
-
-        int marker = GetMarkerIndex(14);
-
-        Console.WriteLine($"The long marker appears after {marker} characters.\n");
-
-    }
-
-    #region Private methods
-    private int GetMarkerIndex(int markerLength)
-    {
-        for (int i = 0; i < message.Length - markerLength + 1; i++)
+        public _2022Day06() : base("Day06")
         {
-            string tmp = message.Substring(i, markerLength);
-            string tmpDistinct = new(tmp.Distinct().ToArray());
-            if (tmp == tmpDistinct)
-            {
-                return i + markerLength; //shift to the end
-            }
+            message = Input[0];
         }
 
-        return -1;
+        public override void Part1()
+        {
+            base.Part1();
+
+            int marker = GetMarkerIndex(4);
+
+            Console.WriteLine($"The short marker appears after {marker} characters.\n");
+        }
+
+        public override void Part2()
+        {
+            base.Part2();
+
+            int marker = GetMarkerIndex(14);
+
+            Console.WriteLine($"The long marker appears after {marker} characters.\n");
+
+        }
+
+        #region Private methods
+        private int GetMarkerIndex(int markerLength)
+        {
+            for (int i = 0; i < message.Length - markerLength + 1; i++)
+            {
+                string tmp = message.Substring(i, markerLength);
+                string tmpDistinct = new(tmp.Distinct().ToArray());
+                if (tmp == tmpDistinct)
+                {
+                    return i + markerLength; //shift to the end
+                }
+            }
+
+            return -1;
+        }
+        #endregion
     }
-    #endregion
 }
