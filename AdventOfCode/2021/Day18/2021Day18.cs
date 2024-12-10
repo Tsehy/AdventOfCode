@@ -1,112 +1,115 @@
-﻿public class _2021Day18 : _2021Day
+﻿namespace AdventOfCode
 {
-    public _2021Day18() : base("Day18")
+    public class _2021Day18 : _2021Day
     {
-        
-    }
-
-    public override void Part1()
-    {
-        base.Part1();
-
-        Node sumAll = Convert(input[0]);
-
-        for (int i = 1; i < input.Length; i++)
+        public _2021Day18() : base("Day18")
         {
-            sumAll = new Node(sumAll, Convert(input[i]), null);
-            sumAll.Simplify();
+
         }
 
-        Console.WriteLine($"The magnitude of the final sum: {sumAll.Magnitude()}\n");
-    }
-
-    public override void Part2()
-    {
-        base.Part2();
-
-        int maxMagnitude = 0;
-
-        for (int i = 0; i < input.Length; i++)
+        public override void Part1()
         {
-            for (int j = i + 1; j < input.Length; j++)
+            base.Part1();
+
+            Node sumAll = Convert(Input[0]);
+
+            for (int i = 1; i < Input.Length; i++)
             {
-                maxMagnitude = GetMaxMagnitude(input[i], input[j], maxMagnitude);
-                maxMagnitude = GetMaxMagnitude(input[j], input[i], maxMagnitude);
+                sumAll = new Node(sumAll, Convert(Input[i]), null);
+                sumAll.Simplify();
             }
+
+            Console.WriteLine($"The magnitude of the final sum: {sumAll.Magnitude()}\n");
         }
 
-        Console.WriteLine($"The largest magnitude of two numbers: {maxMagnitude}\n");
-    }
-
-    #region Private methods
-    private static Node Convert(string input)
-    {
-        string trimInput = input.Substring(1, input.Length - 2);
-        int middle = MiddleCommaIndex(trimInput);
-
-        string left = trimInput.Substring(0, middle);
-        string right = trimInput.Substring(middle + 1, trimInput.Length - middle - 1);
-
-        Node leftNode;
-        if (left.Contains('['))
+        public override void Part2()
         {
-            leftNode = Convert(left);
-        }
-        else
-        {
-            leftNode = new Node(int.Parse(left), null);
-        }
+            base.Part2();
 
-        Node rightNode;
-        if (right.Contains('['))
-        {
-            rightNode = Convert(right);
-        }
-        else
-        {
-            rightNode = new Node(int.Parse(right), null);
-        }
+            int maxMagnitude = 0;
 
-        return new Node(leftNode, rightNode, null);
-    }
-
-    private static int MiddleCommaIndex(string input)
-    {
-        int depth = 0;
-
-        for (int i = 0; i < input.Length; i++)
-        {
-            switch (input[i])
+            for (int i = 0; i < Input.Length; i++)
             {
-                case '[':
-                    depth++;
-                    break;
-                case ']':
-                    depth--;
-                    break;
-                case ',':
-                    if (depth == 0)
-                    {
-                        return i;
-                    }
-                    break;
+                for (int j = i + 1; j < Input.Length; j++)
+                {
+                    maxMagnitude = GetMaxMagnitude(Input[i], Input[j], maxMagnitude);
+                    maxMagnitude = GetMaxMagnitude(Input[j], Input[i], maxMagnitude);
+                }
             }
+
+            Console.WriteLine($"The largest magnitude of two numbers: {maxMagnitude}\n");
         }
 
-        return -1;
-    }
-
-    private static int GetMaxMagnitude(string a, string b, int currentMax)
-    {
-        Node sum = new Node(Convert(a), Convert(b), null);
-        sum.Simplify();
-        int m = sum.Magnitude();
-        if (m > currentMax)
+        #region Private methods
+        private static Node Convert(string Input)
         {
-            return m;
+            string trimInput = Input.Substring(1, Input.Length - 2);
+            int middle = MiddleCommaIndex(trimInput);
+
+            string left = trimInput.Substring(0, middle);
+            string right = trimInput.Substring(middle + 1, trimInput.Length - middle - 1);
+
+            Node leftNode;
+            if (left.Contains('['))
+            {
+                leftNode = Convert(left);
+            }
+            else
+            {
+                leftNode = new Node(int.Parse(left), null);
+            }
+
+            Node rightNode;
+            if (right.Contains('['))
+            {
+                rightNode = Convert(right);
+            }
+            else
+            {
+                rightNode = new Node(int.Parse(right), null);
+            }
+
+            return new Node(leftNode, rightNode, null);
         }
 
-        return currentMax;
+        private static int MiddleCommaIndex(string Input)
+        {
+            int depth = 0;
+
+            for (int i = 0; i < Input.Length; i++)
+            {
+                switch (Input[i])
+                {
+                    case '[':
+                        depth++;
+                        break;
+                    case ']':
+                        depth--;
+                        break;
+                    case ',':
+                        if (depth == 0)
+                        {
+                            return i;
+                        }
+                        break;
+                }
+            }
+
+            return -1;
+        }
+
+        private static int GetMaxMagnitude(string a, string b, int currentMax)
+        {
+            Node sum = new Node(Convert(a), Convert(b), null);
+            sum.Simplify();
+            int m = sum.Magnitude();
+            if (m > currentMax)
+            {
+                return m;
+            }
+
+            return currentMax;
+        }
+        #endregion
     }
-    #endregion
 }

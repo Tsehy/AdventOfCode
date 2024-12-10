@@ -1,234 +1,237 @@
-﻿public class Node
+﻿namespace AdventOfCode
 {
-    public bool IsLeaf { get; set; }
-    public int? Value { get; set; }
-    public Node Left { get; set; }
-    public Node Right { get; set; }
-    public Node Parent { get; set; }
-
-    public int Depth
+    public class Node
     {
-        get
+        public bool IsLeaf { get; set; }
+        public int? Value { get; set; }
+        public Node Left { get; set; }
+        public Node Right { get; set; }
+        public Node Parent { get; set; }
+
+        public int Depth
         {
-            Node tmp = this;
-            int depth = 0;
-
-            while (tmp.Parent != null)
+            get
             {
-                tmp = tmp.Parent;
-                depth++;
+                Node tmp = this;
+                int depth = 0;
+
+                while (tmp.Parent != null)
+                {
+                    tmp = tmp.Parent;
+                    depth++;
+                }
+                return depth;
             }
-            return depth;
-        }
-    }
-
-    public Node(int value, Node parent)
-    {
-        this.Value = value;
-        IsLeaf = true;
-        this.Parent = parent;
-        Left = null;
-        Right = null;
-    }
-
-    public Node(Node left, Node right, Node parent)
-    {
-        Value = null;
-        IsLeaf = false;
-        this.Parent = parent;
-        this.Left = left;
-        this.Left.Parent = this;
-        this.Right = right;
-        this.Right.Parent = this;
-    }
-
-    public void Simplify()
-    {
-        while (true)
-        {
-            Node explodeable = FindExplodable();
-            if (explodeable != null)
-            {
-                explodeable.Explode();
-                continue;
-            }
-
-            Node splitable = FindSplitable();
-            if (splitable != null)
-            {
-                splitable.Split();
-                continue;
-            }
-
-            break;
-        }
-    }
-
-    public void Explode()
-    {
-        Node leftNeighbour = FindLeftNeighbour();
-        if (leftNeighbour != null && leftNeighbour.IsLeaf)
-        {
-            leftNeighbour.Value += Left.Value;
         }
 
-        Node rightNeighbour = FindRightNeighbour();
-        if (rightNeighbour != null && rightNeighbour.IsLeaf)
+        public Node(int value, Node parent)
         {
-            rightNeighbour.Value += Right.Value;
+            Value = value;
+            IsLeaf = true;
+            Parent = parent;
+            Left = null;
+            Right = null;
         }
 
-        Value = 0;
-        IsLeaf = true;
-        Right = null;
-        Left = null;
-    }
-
-    public Node FindLeftNeighbour()
-    {
-        Node current = this;
-        while (true)
+        public Node(Node left, Node right, Node parent)
         {
-            if (current.Parent == null)
-            {
-                return null;
-            }
+            Value = null;
+            IsLeaf = false;
+            Parent = parent;
+            Left = left;
+            Left.Parent = this;
+            Right = right;
+            Right.Parent = this;
+        }
 
-            bool fromLeft = current.Parent.Left == current;
-            if (fromLeft)
+        public void Simplify()
+        {
+            while (true)
             {
-                current = current.Parent;
-            }
-            else
-            {
-                current = current.Parent.Left;
+                Node explodeable = FindExplodable();
+                if (explodeable != null)
+                {
+                    explodeable.Explode();
+                    continue;
+                }
+
+                Node splitable = FindSplitable();
+                if (splitable != null)
+                {
+                    splitable.Split();
+                    continue;
+                }
+
                 break;
             }
         }
 
-        while (true)
+        public void Explode()
         {
-            if (current.IsLeaf)
+            Node leftNeighbour = FindLeftNeighbour();
+            if (leftNeighbour != null && leftNeighbour.IsLeaf)
             {
-                return current;
+                leftNeighbour.Value += Left.Value;
             }
 
-            current = current.Right;
-        }
-    }
+            Node rightNeighbour = FindRightNeighbour();
+            if (rightNeighbour != null && rightNeighbour.IsLeaf)
+            {
+                rightNeighbour.Value += Right.Value;
+            }
 
-    public Node FindRightNeighbour()
-    {
-        Node current = this;
-        while (true)
+            Value = 0;
+            IsLeaf = true;
+            Right = null;
+            Left = null;
+        }
+
+        public Node FindLeftNeighbour()
         {
-            if (current.Parent == null)
+            Node current = this;
+            while (true)
+            {
+                if (current.Parent == null)
+                {
+                    return null;
+                }
+
+                bool fromLeft = current.Parent.Left == current;
+                if (fromLeft)
+                {
+                    current = current.Parent;
+                }
+                else
+                {
+                    current = current.Parent.Left;
+                    break;
+                }
+            }
+
+            while (true)
+            {
+                if (current.IsLeaf)
+                {
+                    return current;
+                }
+
+                current = current.Right;
+            }
+        }
+
+        public Node FindRightNeighbour()
+        {
+            Node current = this;
+            while (true)
+            {
+                if (current.Parent == null)
+                {
+                    return null;
+                }
+
+                bool fromRight = current.Parent.Right == current;
+                if (fromRight)
+                {
+                    current = current.Parent;
+                }
+                else
+                {
+                    current = current.Parent.Right;
+                    break;
+                }
+            }
+
+            while (true)
+            {
+                if (current.IsLeaf)
+                {
+                    return current;
+                }
+
+                current = current.Left;
+            }
+        }
+
+        public void Split()
+        {
+            if (!IsLeaf)
+            {
+                return;
+            }
+
+            Left = new Node((int)Value / 2, this);
+            Right = new Node((int)Value / 2 + (int)Value % 2, this);
+            Value = null;
+            IsLeaf = false;
+        }
+
+        public Node FindExplodable()
+        {
+            if (IsLeaf)
             {
                 return null;
             }
 
-            bool fromRight = current.Parent.Right == current;
-            if (fromRight)
+            if (Depth >= 4)
             {
-                current = current.Parent;
-            }
-            else
-            {
-                current = current.Parent.Right;
-                break;
-            }
-        }
-
-        while (true)
-        {
-            if (current.IsLeaf)
-            {
-                return current;
+                return this;
             }
 
-            current = current.Left;
-        }
-    }
+            Node fromLeft = Left.FindExplodable();
+            if (fromLeft != null)
+            {
+                return fromLeft;
+            }
 
-    public void Split()
-    {
-        if (!IsLeaf)
-        {
-            return;
-        }
+            Node fromRight = Right.FindExplodable();
+            if (fromRight != null)
+            {
+                return fromRight;
+            }
 
-        Left = new Node((int)Value / 2, this);
-        Right = new Node((int)Value / 2 + (int)Value % 2, this);
-        Value = null;
-        IsLeaf = false;
-    }
-
-    public Node FindExplodable()
-    {
-        if (IsLeaf)
-        {
             return null;
         }
 
-        if (Depth >= 4)
+        public Node FindSplitable()
         {
-            return this;
+            if (IsLeaf && Value > 9)
+            {
+                return this;
+            }
+
+            Node fromLeft = Left?.FindSplitable();
+            if (fromLeft != null)
+            {
+                return fromLeft;
+            }
+
+            Node fromRight = Right?.FindSplitable();
+            if (fromRight != null)
+            {
+                return fromRight;
+            }
+
+            return null;
         }
 
-        Node fromLeft = Left.FindExplodable();
-        if (fromLeft != null)
+        public int Magnitude()
         {
-            return fromLeft;
+            if (IsLeaf)
+            {
+                return (int)Value;
+            }
+
+            return Left.Magnitude() * 3 + Right.Magnitude() * 2;
         }
 
-        Node fromRight = Right.FindExplodable();
-        if (fromRight != null)
+        public override string ToString()
         {
-            return fromRight;
+            if (IsLeaf)
+            {
+                return $"{Value}";
+            }
+
+            return $"[{Left},{Right}]";
         }
-
-        return null;
-    }
-
-    public Node FindSplitable()
-    {
-        if (IsLeaf && Value > 9)
-        {
-            return this;
-        }
-
-        Node fromLeft = Left?.FindSplitable();
-        if (fromLeft != null)
-        {
-            return fromLeft;
-        }
-
-        Node fromRight = Right?.FindSplitable();
-        if (fromRight != null)
-        {
-            return fromRight;
-        }
-
-        return null;
-    }
-
-    public int Magnitude()
-    {
-        if (IsLeaf)
-        {
-            return (int)Value;
-        }
-
-        return Left.Magnitude() * 3 + Right.Magnitude() * 2;
-    }
-
-    public override string ToString()
-    {
-        if (IsLeaf)
-        {
-            return $"{Value}";
-        }
-
-        return $"[{Left},{Right}]";
     }
 }
