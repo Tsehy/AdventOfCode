@@ -1,38 +1,41 @@
-﻿public class _2015Day01 : _2015Day
+﻿namespace AdventOfCode
 {
-    private string floorInstruction;
-
-    public _2015Day01() : base("Day01")
+    public class _2015Day01 : _2015Day
     {
-        floorInstruction = input[0];
-    }
+        private readonly string floorInstruction;
 
-    public override void Part1()
-    {
-        base.Part1();
-
-        int finalFloor = floorInstruction.Sum(c => c == '(' ? 1 : -1);
-
-        Console.WriteLine($"Final floor: {finalFloor}\n");
-    }
-
-    public override void Part2()
-    {
-        base.Part2();
-
-        int currentFloor = 0,
-            currentPosition = 1;
-
-        foreach (char c in floorInstruction)
+        public _2015Day01() : base("Day01")
         {
-            currentFloor += c == '(' ? 1 : -1;
-            if (currentFloor == -1)
-            {
-                break;
-            }
-            currentPosition++;
+            floorInstruction = Input[0];
         }
 
-        Console.WriteLine($"First time entering basement: {currentPosition}. position\n");
+        public override void Part1()
+        {
+            base.Part1();
+
+            int finalFloor = floorInstruction.Sum(c => c == '(' ? 1 : -1);
+
+            Console.WriteLine($"Final floor: {finalFloor}\n");
+        }
+
+        public override void Part2()
+        {
+            base.Part2();
+
+            int currentFloor = 0,
+                currentPosition = 1;
+
+            foreach (char c in floorInstruction)
+            {
+                currentFloor += c == '(' ? 1 : -1;
+                if (currentFloor == -1)
+                {
+                    break;
+                }
+                currentPosition++;
+            }
+
+            Console.WriteLine($"First time entering basement: {currentPosition}. position\n");
+        }
     }
 }

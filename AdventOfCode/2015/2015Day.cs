@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-public class _2015Day : Day
+﻿namespace AdventOfCode
 {
-    public _2015Day(string folderName) : base("2015", folderName)
+    public class _2015Day : Day
     {
+        public _2015Day(string folderName) : base("2015", folderName)
+        {
 
+        }
     }
 }

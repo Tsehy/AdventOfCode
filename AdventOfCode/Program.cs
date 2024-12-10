@@ -1,14 +1,16 @@
 ﻿using System.Reflection;
 
-public class Program
+namespace AdventOfCode
 {
-    private static void Main(string[] args)
+    public class Program
     {
-        Console.Write("Year: ");
-        string? year = Console.ReadLine();
-        Console.Write("Day: ");
-        string? day = Console.ReadLine();
-        Console.WriteLine();
+        private static void Main(string[] args)
+        {
+            Console.Write("Year: ");
+            string? year = Console.ReadLine();
+            Console.Write("Day: ");
+            string? day = Console.ReadLine();
+            Console.WriteLine();
 
             Day? chosenDay = null;
 

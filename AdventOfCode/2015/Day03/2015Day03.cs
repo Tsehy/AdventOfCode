@@ -1,76 +1,79 @@
 ﻿using System.Text.RegularExpressions;
 
-public class _2015Day03 : _2015Day
+namespace AdventOfCode
 {
-    public readonly string instructions;
-
-    public _2015Day03() : base("Day03")
+    public class _2015Day03 : _2015Day
     {
-        instructions = input[0];
-    }
+        public readonly string instructions;
 
-    public override void Part1()
-    {
-        base.Part1();
-
-        HashSet<string> visitedLocations = new();
-        int currentX = 0, currentY = 0;
-
-        foreach (char instruction in instructions)
+        public _2015Day03() : base("Day03")
         {
-            MoveSanta(ref currentX, ref currentY, instruction);
-
-            visitedLocations.Add($"{currentX}-{currentY}");
+            instructions = Input[0];
         }
 
-        Console.WriteLine($"{visitedLocations.Count} number of houses were visited\n");
-    }
-
-    public override void Part2()
-    {
-        base.Part2();
-
-        // matvhes an empty string that has the last match folloved by two characters
-        var instructionPairs = Regex.Split(instructions, @"(?<=\G..)");
-
-        HashSet<string> visitedLocations = new();
-        int santaX = 0, santaY = 0, robotX = 0, robotY = 0;
-
-        foreach (string instructionPair in instructionPairs)
+        public override void Part1()
         {
-            if (instructionPair == "")
+            base.Part1();
+
+            HashSet<string> visitedLocations = new();
+            int currentX = 0, currentY = 0;
+
+            foreach (char instruction in instructions)
             {
-                break; // last pair is an empty string
+                MoveSanta(ref currentX, ref currentY, instruction);
+
+                visitedLocations.Add($"{currentX}-{currentY}");
             }
 
-            MoveSanta(ref santaX, ref santaY, instructionPair[0]);
-            MoveSanta(ref robotX, ref robotY, instructionPair[1]);
-
-            visitedLocations.Add($"{santaX}-{santaY}");
-            visitedLocations.Add($"{robotX}-{robotY}");
+            Console.WriteLine($"{visitedLocations.Count} number of houses were visited\n");
         }
 
-        Console.WriteLine($"{visitedLocations.Count} number of houses were visited\n");
-    }
-
-    #region Private methods
-    private static void MoveSanta(ref int currentX, ref int currentY, char instruction)
-    {
-        switch (instruction)
+        public override void Part2()
         {
-            case '^':
-                currentY++;
-                break;
-            case 'v':
-                currentY--;
-                break;
-            case '>':
-                currentX++;
-                break;
-            default:
-                currentX--;
-                break;
+            base.Part2();
+
+            // matvhes an empty string that has the last match folloved by two characters
+            var instructionPairs = Regex.Split(instructions, @"(?<=\G..)");
+
+            HashSet<string> visitedLocations = new();
+            int santaX = 0, santaY = 0, robotX = 0, robotY = 0;
+
+            foreach (string instructionPair in instructionPairs)
+            {
+                if (instructionPair == "")
+                {
+                    break; // last pair is an empty string
+                }
+
+                MoveSanta(ref santaX, ref santaY, instructionPair[0]);
+                MoveSanta(ref robotX, ref robotY, instructionPair[1]);
+
+                visitedLocations.Add($"{santaX}-{santaY}");
+                visitedLocations.Add($"{robotX}-{robotY}");
+            }
+
+            Console.WriteLine($"{visitedLocations.Count} number of houses were visited\n");
         }
+
+        #region Private methods
+        private static void MoveSanta(ref int currentX, ref int currentY, char instruction)
+        {
+            switch (instruction)
+            {
+                case '^':
+                    currentY++;
+                    break;
+                case 'v':
+                    currentY--;
+                    break;
+                case '>':
+                    currentX++;
+                    break;
+                default:
+                    currentX--;
+                    break;
+            }
+        }
+        #endregion
     }
-    #endregion
 }
