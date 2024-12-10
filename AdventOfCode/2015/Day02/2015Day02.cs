@@ -1,4 +1,4 @@
-﻿internal class _2015Day02 : _2015Day
+﻿public class _2015Day02 : _2015Day
 {
     private readonly List<(int length, int width, int height)> boxes;
 

@@ -10,17 +10,20 @@ public class Program
         string? day = Console.ReadLine();
         Console.WriteLine();
 
+        Day? chosenDay = null;
+
         try
         {
-            Day? chosenDay = CreateDay(year, day);
+            chosenDay = CreateDay(year, day);
 
-            chosenDay?.Part1();
-            chosenDay?.Part2();
         }
         catch (Exception)
         {
             Console.WriteLine("Wrong year or day!\nPlease use format: YYYY DD\n\n(Or the day is not yet compleated)");
         }
+
+        chosenDay?.Part1();
+        chosenDay?.Part2();
     }
 
     #region Private methods

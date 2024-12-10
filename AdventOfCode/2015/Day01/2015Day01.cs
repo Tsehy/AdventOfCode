@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-internal class _2015Day01 : _2015Day
+﻿public class _2015Day01 : _2015Day
 {
     private string floorInstruction;
 
