@@ -10,36 +10,36 @@ public class Program
         string? day = Console.ReadLine();
         Console.WriteLine();
 
-        Day? chosenDay = null;
+            Day? chosenDay = null;
 
-        try
-        {
-            chosenDay = CreateDay(year, day);
+            try
+            {
+                chosenDay = CreateDay(year, day);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Wrong year or day!\nPlease use format: YYYY DD\n\n(Or the day is not yet compleated)");
+            }
 
+            chosenDay?.Part1();
+            chosenDay?.Part2();
         }
-        catch (Exception)
+
+        #region Private methods
+        private static Day? CreateDay(string? sYear, string? sDay)
         {
-            Console.WriteLine("Wrong year or day!\nPlease use format: YYYY DD\n\n(Or the day is not yet compleated)");
+            return (Day?)CreateObject($"_{sYear}Day{sDay}");
         }
 
-        chosenDay?.Part1();
-        chosenDay?.Part2();
+        private static object? CreateObject(string className)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var type = assembly.GetTypes()
+                .First(t => t.Name == className);
+
+            return Activator.CreateInstance(type);
+        }
+        #endregion
     }
-
-    #region Private methods
-    private static Day? CreateDay(string? sYear, string? sDay)
-    {
-        return (Day?)CreateObject($"_{sYear}Day{sDay}");
-    }
-
-    private static object? CreateObject(string className)
-    {
-        var assembly = Assembly.GetExecutingAssembly();
-
-        var type = assembly.GetTypes()
-            .First(t => t.Name == className);
-
-        return Activator.CreateInstance(type);
-    }
-    #endregion
 }
