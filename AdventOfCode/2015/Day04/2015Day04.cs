@@ -2,7 +2,7 @@
 
 namespace AdventOfCode
 {
-    internal class _2015Day04 : _2015Day
+    public class _2015Day04 : _2015Day
     {
         private readonly string secretKey;
 
