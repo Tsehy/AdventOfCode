@@ -38,9 +38,9 @@ namespace AdventOfCode
                 ExecuteInstructionPart2(lamps, instr);
             }
 
-            int lampsOn = lamps.Cast<int>().Sum(l => l);
+            int totalBrightness = lamps.Cast<int>().Sum(l => l);
 
-            Console.WriteLine($"{lampsOn} lamps are turned on.\n");
+            Console.WriteLine($"The total brightness is {totalBrightness}.\n");
         }
 
         #region Private methods

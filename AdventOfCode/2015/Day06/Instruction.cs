@@ -4,18 +4,18 @@ namespace AdventOfCode.Day06
 {
     readonly record struct Instruction(string Mode, int X1, int Y1, int X2, int Y2)
     {
+        private static readonly Regex instructionPattern = new(@"(toggle|turn on|turn off) (\d{0,3}),(\d{0,3}) through (\d{0,3}),(\d{0,3})");
+
         public static implicit operator Instruction(string stringInstruction)
         {
-            var r = new Regex(@"(toggle|turn on|turn off) (\d{0,3}),(\d{0,3}) through (\d{0,3}),(\d{0,3})");
-            Match m = r.Match(stringInstruction);
+            Match match = instructionPattern.Match(stringInstruction);
             return new Instruction(
-                m.Groups[1].Value,
-                int.Parse(m.Groups[2].Value),
-                int.Parse(m.Groups[3].Value),
-                int.Parse(m.Groups[4].Value),
-                int.Parse(m.Groups[5].Value)
+                match.Groups[1].Value,
+                int.Parse(match.Groups[2].Value),
+                int.Parse(match.Groups[3].Value),
+                int.Parse(match.Groups[4].Value),
+                int.Parse(match.Groups[5].Value)
             );
         }
     }
-
 }
