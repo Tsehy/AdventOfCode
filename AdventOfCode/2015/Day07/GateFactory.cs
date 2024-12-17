@@ -25,11 +25,9 @@ namespace AdventOfCode._2015.Day07
             if (_signalRegex.IsMatch(str))
             {
                 Match match = _signalRegex.Match(str);
-                string name = match.Groups[2].Value;
                 CreatedGates.Add(
-                    name,
+                    match.Groups[2].Value,
                     new SignalGate(
-                        name,
                         int.Parse(match.Groups[1].Value)
                     )
                 );
@@ -43,11 +41,9 @@ namespace AdventOfCode._2015.Day07
                 Match match = _wireRegex.Match(str);
                 if (CreatedGates.TryGetValue(match.Groups[1].Value, out IGate? input))
                 {
-                    string name = match.Groups[2].Value;
                     CreatedGates.Add(
-                        name,
+                        match.Groups[2].Value,
                         new WireGate(
-                            name,
                             input
                         )
                     );
@@ -66,7 +62,6 @@ namespace AdventOfCode._2015.Day07
                     CreatedGates.Add(
                         name,
                         new AndGate(
-                            name,
                             gateLeft,
                             rightGate
                         )
@@ -78,7 +73,6 @@ namespace AdventOfCode._2015.Day07
                     CreatedGates.Add(
                         name,
                         new AndGate(
-                            name,
                             leftNum,
                             rightGate
                         )
@@ -98,7 +92,6 @@ namespace AdventOfCode._2015.Day07
                     CreatedGates.Add(
                         name,
                         new OrGate(
-                            name,
                             gateLeft,
                             rightGate
                         )
@@ -110,7 +103,6 @@ namespace AdventOfCode._2015.Day07
                     CreatedGates.Add(
                         name,
                         new OrGate(
-                            name,
                             leftNum,
                             rightGate
                         )
@@ -118,17 +110,17 @@ namespace AdventOfCode._2015.Day07
                     return true;
                 }
             }
+            #endregion
 
+            #region Not
             if (_notRegex.IsMatch(str))
             {
                 Match match = _notRegex.Match(str);
                 if (CreatedGates.TryGetValue(match.Groups[1].Value, out IGate? inputGate))
                 {
-                    string name = match.Groups[2].Value;
                     CreatedGates.Add(
-                        name,
+                        match.Groups[2].Value,
                         new NotGate(
-                            name,
                             inputGate
                         )
                     );
@@ -143,10 +135,9 @@ namespace AdventOfCode._2015.Day07
                 Match match = _lShiftRegex.Match(str);
                 if (CreatedGates.TryGetValue(match.Groups[1].Value, out IGate? inputGate))
                 {
-                    string name = match.Groups[3].Value;
-                    CreatedGates.Add(name,
+                    CreatedGates.Add(
+                        match.Groups[3].Value,
                         new LShiftGate(
-                            name,
                             inputGate,
                             int.Parse(match.Groups[2].Value)
                         )
@@ -162,11 +153,9 @@ namespace AdventOfCode._2015.Day07
                 Match match = _rShiftRegex.Match(str);
                 if (CreatedGates.TryGetValue(match.Groups[1].Value, out IGate? inputGate))
                 {
-                    string name = match.Groups[3].Value;
                     CreatedGates.Add(
-                        name,
+                        match.Groups[3].Value,
                         new RShiftGate(
-                            match.Groups[3].Value,
                             inputGate,
                             int.Parse(match.Groups[2].Value)
                         )
