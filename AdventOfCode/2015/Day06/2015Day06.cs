@@ -1,4 +1,4 @@
-﻿using AdventOfCode.Day06;
+﻿using AdventOfCode._2015.Day06;
 
 namespace AdventOfCode
 {

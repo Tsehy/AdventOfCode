@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace AdventOfCode.Day06
+namespace AdventOfCode._2015.Day06
 {
     readonly record struct Instruction(string Mode, int X1, int Y1, int X2, int Y2)
     {
