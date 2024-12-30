@@ -37,7 +37,7 @@ namespace AdventOfCode
 
         private string IterateNumber(string number)
         {
-            return string.Join("", Regex.Matches(number, @"(\d)\1*").Select(m => $"{m.Groups[0].Length}{m.Groups[0].Value[0]}"));
+            return string.Join("", Regex.Matches(number, @"(\d)\1*").Select(m => $"{m.Value.Length}{m.Value[0]}"));
         }
     }
 }
