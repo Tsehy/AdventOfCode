@@ -35,9 +35,6 @@ namespace AdventOfCode
             Console.WriteLine($"Length of the result: {number.Length}\n");
         }
 
-        private string IterateNumber(string number)
-        {
-            return string.Join("", Regex.Matches(number, @"(\d)\1*").Select(m => $"{m.Value.Length}{m.Value[0]}"));
-        }
+        private static string IterateNumber(string number) => string.Join("", Regex.Matches(number, @"(\d)\1*").Select(m => $"{m.Value.Length}{m.Value[0]}"));
     }
 }
