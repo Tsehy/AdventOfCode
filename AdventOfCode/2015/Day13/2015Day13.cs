@@ -65,7 +65,7 @@ namespace AdventOfCode
         // Held-Karp algorithm
         // because the neares neighbour algo from day09 is bad in this situation
         // https://en.wikipedia.org/wiki/Travelling_salesman_problem#cite_note-31
-        public int GetMaxSeating(bool withMe = false)
+        private int GetMaxSeating(bool withMe = false)
         {
             var personsList = persons.ToList();
             personsList.Remove(first);

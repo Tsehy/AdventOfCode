@@ -50,7 +50,7 @@ namespace AdventOfCode._2015.Day11
                 i--;
             }
 
-            if ("ilo".Contains(builder[i]))
+            if ("hkn".Contains(builder[i]))
             {
                 builder[i] = (char)(builder[i] + 2);
             }

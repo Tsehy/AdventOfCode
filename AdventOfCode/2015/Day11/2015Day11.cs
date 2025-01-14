@@ -1,12 +1,13 @@
-﻿using System.Text.RegularExpressions;
-using AdventOfCode._2015.Day11;
+﻿using AdventOfCode._2015.Day11;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
-    public class _2015Day11 : _2015Day
+    public partial class _2015Day11 : _2015Day
     {
+        [GeneratedRegex(@"([a-z])\1.*([a-z])\2")]
+        private static partial Regex DoublePairRegex();
         private string pass;
-        private readonly Regex doublePair = new Regex(@"([a-z])\1.*([a-z])\2");
 
         public _2015Day11() : base("Day11")
         {
@@ -17,7 +18,7 @@ namespace AdventOfCode
         {
             base.Part1();
 
-            while (!pass.HasSequence() || !doublePair.IsMatch(pass))
+            while (!pass.HasSequence() || !DoublePairRegex().IsMatch(pass))
             {
                 pass = pass.Increase();
             }
@@ -31,7 +32,7 @@ namespace AdventOfCode
 
             // I hate the do-while...
             pass = pass.Increase();
-            while (!pass.HasSequence() || !doublePair.IsMatch(pass))
+            while (!pass.HasSequence() || !DoublePairRegex().IsMatch(pass))
             {
                 pass = pass.Increase();
             }
