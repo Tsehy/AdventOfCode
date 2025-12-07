@@ -101,7 +101,7 @@ namespace AdventOfCode
                 steps++;
             } 
 
-            Console.WriteLine($"Fewest number of replacements to create the medicine: {steps}");
+            Console.WriteLine($"Fewest number of replacements to create the medicine: {steps}\n");
         }
     }
 }

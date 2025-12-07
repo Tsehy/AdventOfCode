@@ -29,7 +29,7 @@ namespace AdventOfCode
 
                 if (houses[elf] >= InputNumber)
                 {
-                    Console.WriteLine($"Lowest house number: {elf}");
+                    Console.WriteLine($"Lowest house number: {elf}\n");
                     break;
                 }
             }
@@ -53,7 +53,7 @@ namespace AdventOfCode
 
                 if (houses[elf] >= InputNumber)
                 {
-                    Console.WriteLine($"Lowest house number: {elf}");
+                    Console.WriteLine($"Lowest house number: {elf}\n");
                     break;
                 }
             }
