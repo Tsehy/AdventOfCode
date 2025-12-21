@@ -17,7 +17,7 @@ namespace AdventOfCode
 
             int lowest = GetLowestNumber(secretKey, "^00000");
 
-            Console.WriteLine($"Lowest number: {lowest}\n");
+            Console.WriteLine($"Lowest number: {lowest}");
         }
 
         public override void Part2()
@@ -26,7 +26,7 @@ namespace AdventOfCode
 
             int lowest = GetLowestNumber(secretKey, "^000000");
 
-            Console.WriteLine($"Lowest number: {lowest}\n");
+            Console.WriteLine($"Lowest number: {lowest}");
         }
 
         #region Private methods

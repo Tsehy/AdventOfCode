@@ -48,7 +48,7 @@ public partial class _2015Day25 : _2015Day
         Console.WriteLine(Column);
         Console.WriteLine(index);
         long code = Pseudo(20151125, 252533, 33554393, index);
-        Console.WriteLine($"The copy protection code is: {code}\n");
+        Console.WriteLine($"The copy protection code is: {code}");
     }
 
     public override void Part2()

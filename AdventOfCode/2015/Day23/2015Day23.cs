@@ -59,7 +59,7 @@ namespace AdventOfCode
             var registers = new Dictionary<string, BigInteger> { { "a", 0 }, { "b", 0 } };
             ExecuteInstructions(registers);
 
-            Console.WriteLine($"Value in register 'b': {registers["b"]}\n");
+            Console.WriteLine($"Value in register 'b': {registers["b"]}");
         }
 
         public override void Part2()
@@ -69,7 +69,7 @@ namespace AdventOfCode
             var registers = new Dictionary<string, BigInteger> { { "a", 1 }, { "b", 0 } };
             ExecuteInstructions(registers);
 
-            Console.WriteLine($"Value in register 'b': {registers["b"]}\n");
+            Console.WriteLine($"Value in register 'b': {registers["b"]}");
         }
     }
 }

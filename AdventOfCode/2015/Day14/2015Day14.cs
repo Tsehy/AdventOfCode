@@ -23,7 +23,7 @@ namespace AdventOfCode
         {
             base.Part1();
 
-            Console.WriteLine($"Distance dome by the winning reindeer: {GetMaxDistanceAt(2503)}km\n");
+            Console.WriteLine($"Distance dome by the winning reindeer: {GetMaxDistanceAt(2503)}km");
         }
 
         public override void Part2()
@@ -39,7 +39,7 @@ namespace AdventOfCode
                 }
             }
 
-            Console.WriteLine($"Winning reinder's score: {scores.Max()}\n");
+            Console.WriteLine($"Winning reinder's score: {scores.Max()}");
         }
 
         private int GetMaxDistanceAt(int time) => Reindeers.Select(r => r.DistanceAt(time)).Max();

@@ -16,7 +16,7 @@ namespace AdventOfCode
         {
             base.Part1();
 
-            Console.WriteLine($"Signal on wire 'a': {factory.CreatedGates["a"].Value}\n");
+            Console.WriteLine($"Signal on wire 'a': {factory.CreatedGates["a"].Value}");
         }
 
         public override void Part2()
@@ -27,7 +27,7 @@ namespace AdventOfCode
             {
                 gateB.Value = factory.CreatedGates["a"].Value;
                 factory.CreatedGates["a"].RecalculateValue();
-                Console.WriteLine($"New signal on wire 'a': {factory.CreatedGates["a"].Value}\n");
+                Console.WriteLine($"New signal on wire 'a': {factory.CreatedGates["a"].Value}");
             }
             else
             {

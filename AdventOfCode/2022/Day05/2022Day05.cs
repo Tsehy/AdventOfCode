@@ -22,7 +22,7 @@
 
             crates = DeepCopy(originalData);
 
-            Console.WriteLine($"The crates on top with 9000: {cratesOnTop}\n");
+            Console.WriteLine($"The crates on top with 9000: {cratesOnTop}");
         }
 
         public override void Part2()
@@ -38,7 +38,7 @@
 
             crates = DeepCopy(originalData);
 
-            Console.WriteLine($"The crates on top with 9001: {cratesOnTop}\n");
+            Console.WriteLine($"The crates on top with 9001: {cratesOnTop}");
 
         }
 

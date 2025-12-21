@@ -17,7 +17,7 @@
 
             int sumPriority = bagpacks.Select(b => b.Item1.Where(c => b.Item2.Contains(c)).Select(c => GetPriority(c)).First()).Sum();
 
-            Console.WriteLine($"The totaly priority of the elements that appear in both compartments: {sumPriority}\n");
+            Console.WriteLine($"The totaly priority of the elements that appear in both compartments: {sumPriority}");
         }
 
         public override void Part2()
@@ -26,7 +26,7 @@
 
             int sumGroupPriority = groups.Select(g => g.Item1.Where(c => g.Item2.Contains(c) && g.Item3.Contains(c)).Select(c => GetPriority(c)).First()).Sum();
 
-            Console.WriteLine($"The totaly priority of the groups: {sumGroupPriority}\n");
+            Console.WriteLine($"The totaly priority of the groups: {sumGroupPriority}");
         }
 
         #region Private methods

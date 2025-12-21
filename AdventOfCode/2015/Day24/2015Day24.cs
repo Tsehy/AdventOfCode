@@ -57,7 +57,7 @@ namespace AdventOfCode._2015.Day24
 
             long? minQE = MinQE(Weights, 3);
             //var minQE = MyMinQE(Weights, 3);
-            Console.WriteLine($"The quantum entanglement of the first group of packages: {minQE}\n");
+            Console.WriteLine($"The quantum entanglement of the first group of packages: {minQE}");
         }
 
         #region Horror
@@ -122,7 +122,7 @@ namespace AdventOfCode._2015.Day24
             base.Part2();
 
             long? minQE = MinQE(Weights, 4);
-            Console.WriteLine($"The quantum entanglement of the first group of packages: {minQE}\n");
+            Console.WriteLine($"The quantum entanglement of the first group of packages: {minQE}");
         }
     }
 }

@@ -19,14 +19,14 @@ namespace AdventOfCode
         {
             base.Part1();
 
-            Console.WriteLine($"The gift is from Sue number {Sues.IndexOf(Sues.Where(s => s.SimilarTo(MFCSAM)).Single()) + 1}\n");
+            Console.WriteLine($"The gift is from Sue number {Sues.IndexOf(Sues.Where(s => s.SimilarTo(MFCSAM)).Single()) + 1}");
         }
 
         public override void Part2()
         {
             base.Part2();
 
-            Console.WriteLine($"Sue number {Sues.IndexOf(Sues.Where(s => s.SimilarToReal(MFCSAM)).Single()) + 1} in the real Sue\n");
+            Console.WriteLine($"Sue number {Sues.IndexOf(Sues.Where(s => s.SimilarToReal(MFCSAM)).Single()) + 1} in the real Sue");
         }
     }
 }

@@ -52,14 +52,14 @@ namespace AdventOfCode
         {
             base.Part1();
 
-            Console.WriteLine($"Total change in happines with the best seating: {GetMaxSeating()}\n");
+            Console.WriteLine($"Total change in happines with the best seating: {GetMaxSeating()}");
         }
 
         public override void Part2()
         {
             base.Part2();
 
-            Console.WriteLine($"Total change in happines with the best seating including *me*: {GetMaxSeating(true)}\n");
+            Console.WriteLine($"Total change in happines with the best seating including *me*: {GetMaxSeating(true)}");
         }
 
         // Held-Karp algorithm

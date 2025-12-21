@@ -49,7 +49,7 @@ namespace AdventOfCode
                 Iterate();
             }
 
-            Console.WriteLine($"{Grid.Count(p => p.State)} lamps are on\n");
+            Console.WriteLine($"{Grid.Count(p => p.State)} lamps are on");
         }
 
         public override void Part2()
@@ -70,7 +70,7 @@ namespace AdventOfCode
                 Iterate(true);
             }
 
-            Console.WriteLine($"{Grid.Count(p => p.State)} lamps are on (with fixed corners)\n");
+            Console.WriteLine($"{Grid.Count(p => p.State)} lamps are on (with fixed corners)");
         }
 
         private void Iterate(bool cornerCheck = false)

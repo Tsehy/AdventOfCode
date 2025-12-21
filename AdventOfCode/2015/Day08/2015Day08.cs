@@ -23,7 +23,7 @@ namespace AdventOfCode
 
             int memoryCharacters = Input.Sum(s => s.Length - OneChar().Matches(s).Count - 3 * ThreeChar().Matches(s).Count - 2);
 
-            Console.WriteLine($"Diff: {totalCharacters - memoryCharacters}\n");
+            Console.WriteLine($"Diff: {totalCharacters - memoryCharacters}");
         }
 
         public override void Part2()
@@ -32,7 +32,7 @@ namespace AdventOfCode
 
             int encodedCharacters = Input.Sum(s => s.Length + s.Count(c => "\\\x22".Contains(c)) + 2);
 
-            Console.WriteLine($"Diff: {encodedCharacters - totalCharacters}\n");
+            Console.WriteLine($"Diff: {encodedCharacters - totalCharacters}");
         }
 
     }

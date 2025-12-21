@@ -45,14 +45,14 @@ namespace AdventOfCode
         {
             base.Part1();
 
-            Console.WriteLine($"Lowest cost equipment that beats the boss: {LowestCost}\n");
+            Console.WriteLine($"Lowest cost equipment that beats the boss: {LowestCost}");
         }
 
         public override void Part2()
         {
             base.Part2();
 
-            Console.WriteLine($"Highest cost equipment that does not beats the boss: {HighestCost}\n");
+            Console.WriteLine($"Highest cost equipment that does not beats the boss: {HighestCost}");
         }
     }
 }

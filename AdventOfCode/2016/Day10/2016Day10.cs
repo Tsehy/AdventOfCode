@@ -52,7 +52,7 @@ public partial class _2016Day10 : _2016Day
     {
         base.Part1();
 
-        Console.WriteLine($"{PartOneSolution} is comparing 17 and 61\n");
+        Console.WriteLine($"{PartOneSolution} is comparing 17 and 61");
     }
 
     public override void Part2()
@@ -60,6 +60,6 @@ public partial class _2016Day10 : _2016Day
         base.Part2();
 
         int productSum = Bots.Where(vp => vp.Key is "output 0" or "output 1" or "output 2").Select(vp => vp.Value.Values.Sum()).Aggregate((i, p) => i * p);
-        Console.WriteLine($"Product sum of output 0, 1 and 2 is: {productSum}\n");
+        Console.WriteLine($"Product sum of output 0, 1 and 2 is: {productSum}");
     }
 }

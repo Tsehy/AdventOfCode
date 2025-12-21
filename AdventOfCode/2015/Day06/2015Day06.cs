@@ -24,7 +24,7 @@ namespace AdventOfCode
 
             int lampsOn = lamps.Cast<bool>().Count(l => l);
 
-            Console.WriteLine($"{lampsOn} lamps are turned on.\n");
+            Console.WriteLine($"{lampsOn} lamps are turned on.");
         }
 
         public override void Part2()
@@ -40,7 +40,7 @@ namespace AdventOfCode
 
             int totalBrightness = lamps.Cast<int>().Sum(l => l);
 
-            Console.WriteLine($"The total brightness is {totalBrightness}.\n");
+            Console.WriteLine($"The total brightness is {totalBrightness}.");
         }
 
         #region Private methods

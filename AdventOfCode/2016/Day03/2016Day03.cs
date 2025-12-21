@@ -20,7 +20,7 @@ public class _2016Day03 : _2016Day
         base.Part1();
 
         int validTriangles = Triangles.Count(IsTriangle);
-        Console.WriteLine($"Number of valid triangles: {validTriangles}\n");
+        Console.WriteLine($"Number of valid triangles: {validTriangles}");
     }
 
     public override void Part2()
@@ -35,6 +35,6 @@ public class _2016Day03 : _2016Day
                     count++;
             i += 3;
         }
-        Console.WriteLine($"Number of valid triangles: {count}\n");
+        Console.WriteLine($"Number of valid triangles: {count}");
     }
 }

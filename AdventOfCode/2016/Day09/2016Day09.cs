@@ -34,7 +34,7 @@ public class _2016Day09 : _2016Day
         base.Part1();
 
         long length = GetLength(Input[0], recursive: false);
-        Console.WriteLine($"The lenght after one decompreccion is: {length}\n");
+        Console.WriteLine($"The lenght after one decompreccion is: {length}");
     }
 
     public override void Part2()
@@ -42,6 +42,6 @@ public class _2016Day09 : _2016Day
         base.Part2();
 
         long length = GetLength(Input[0], recursive: true);
-        Console.WriteLine($"The lenght after recursive decompreccion is: {length}\n");
+        Console.WriteLine($"The lenght after recursive decompreccion is: {length}");
     }
 }

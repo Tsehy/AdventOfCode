@@ -17,7 +17,7 @@ public class _2016Day04 : _2016Day
 
         int realRooms = Rooms.Where(r => r.IsValid()).Sum(r => r.SectorId);
 
-        Console.WriteLine($"Sum of the real rooms sector ids: {realRooms}\n");
+        Console.WriteLine($"Sum of the real rooms sector ids: {realRooms}");
     }
 
     public override void Part2()

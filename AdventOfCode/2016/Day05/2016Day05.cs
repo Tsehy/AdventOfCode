@@ -25,7 +25,7 @@ public class _2016Day05 : _2016Day
                 pass.Append(bytes[2].ToString("x"));
             index++;
         }
-        Console.WriteLine($"The password to the first door is: {pass}\n");
+        Console.WriteLine($"The password to the first door is: {pass}");
     }
 
     public override void Part2()
@@ -44,6 +44,6 @@ public class _2016Day05 : _2016Day
             }
             index++;
         }
-        Console.WriteLine($"The password to the second door is: {string.Join("", pass)}\n");
+        Console.WriteLine($"The password to the second door is: {string.Join("", pass)}");
     }
 }

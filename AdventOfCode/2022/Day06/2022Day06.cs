@@ -15,7 +15,7 @@
 
             int marker = GetMarkerIndex(4);
 
-            Console.WriteLine($"The short marker appears after {marker} characters.\n");
+            Console.WriteLine($"The short marker appears after {marker} characters.");
         }
 
         public override void Part2()
@@ -24,7 +24,7 @@
 
             int marker = GetMarkerIndex(14);
 
-            Console.WriteLine($"The long marker appears after {marker} characters.\n");
+            Console.WriteLine($"The long marker appears after {marker} characters.");
 
         }
 

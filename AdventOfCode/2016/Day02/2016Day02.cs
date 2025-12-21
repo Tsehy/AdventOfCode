@@ -42,7 +42,7 @@ public class _2016Day02 : _2016Day
             password += num.ToString();
         }
 
-        Console.WriteLine($"The bathroom code is: {password}\n");
+        Console.WriteLine($"The bathroom code is: {password}");
     }
 
     public static void Move2(ref int x, ref int y, char direction)
@@ -88,6 +88,6 @@ public class _2016Day02 : _2016Day
             password += magic[(x + 2) + 5 * (y + 2)];
         }
 
-        Console.WriteLine($"The correct bathroom code is: {password}\n");
+        Console.WriteLine($"The correct bathroom code is: {password}");
     }
 }

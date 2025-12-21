@@ -23,7 +23,7 @@ public partial class _2016Day07 : _2016Day
             .Select(i => Word().Replace(i, ""))
             .Count(i => i.Contains('@') && !i.Contains("[@"));
 
-        Console.WriteLine($"{support} IPv7 supports TLS.\n");
+        Console.WriteLine($"{support} IPv7 supports TLS.");
     }
 
     [GeneratedRegex(@"(?=((?<=\[\w*)(\w)(?:(?!\2)\w)\2))", RegexOptions.Compiled)]
@@ -44,6 +44,6 @@ public partial class _2016Day07 : _2016Day
                        where bab.Any(noBracket.Contains)
                        select str).Count();
 
-        Console.WriteLine($"{support} IPv7 supports SSL.\n");
+        Console.WriteLine($"{support} IPv7 supports SSL.");
     }
 }

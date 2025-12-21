@@ -25,7 +25,7 @@
                 totalWrapping += 2 * (side1 + side2 + side3) + Math.Min(Math.Min(side1, side2), side3);
             }
 
-            Console.WriteLine($"Total area of wrapping paper: {totalWrapping} square feet\n");
+            Console.WriteLine($"Total area of wrapping paper: {totalWrapping} square feet");
         }
 
         public override void Part2()
@@ -41,7 +41,7 @@
                 totalRibbon += ribbonForBow + ribbonForBox;
             }
 
-            Console.WriteLine($"Total length of the ribbon: {totalRibbon} feet\n");
+            Console.WriteLine($"Total length of the ribbon: {totalRibbon} feet");
         }
 
         #region Private methods

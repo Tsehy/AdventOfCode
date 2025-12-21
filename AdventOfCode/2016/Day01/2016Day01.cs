@@ -42,7 +42,7 @@ namespace AdventOfCode
                 }
             }
 
-            Console.WriteLine($"Curent location: {x}, {y}\nDistance: {Math.Abs(x) + Math.Abs(y)}\n");
+            Console.WriteLine($"Curent location: {x}, {y}\nDistance: {Math.Abs(x) + Math.Abs(y)}");
         }
 
         public override void Part2()
@@ -94,7 +94,7 @@ namespace AdventOfCode
                 }
             }
 
-            Console.WriteLine($"Visited twice: {location}\nDistance: {distance}\n");
+            Console.WriteLine($"Visited twice: {location}\nDistance: {distance}");
 
         }
 

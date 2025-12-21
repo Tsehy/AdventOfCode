@@ -20,7 +20,7 @@ namespace AdventOfCode
                 number = IterateNumber(number);
             }
 
-            Console.WriteLine($"Length of the result: {number.Length}\n");
+            Console.WriteLine($"Length of the result: {number.Length}");
         }
 
         public override void Part2()
@@ -32,7 +32,7 @@ namespace AdventOfCode
                 number = IterateNumber(number);
             }
 
-            Console.WriteLine($"Length of the result: {number.Length}\n");
+            Console.WriteLine($"Length of the result: {number.Length}");
         }
 
         private static string IterateNumber(string number) => string.Join("", Regex.Matches(number, @"(\d)\1*").Select(m => $"{m.Value.Length}{m.Value[0]}"));

@@ -41,7 +41,7 @@ public class _2016Day08 : _2016Day
         base.Part1();
 
         int litPixels = Display.Cast<bool>().Count(p => p);
-        Console.WriteLine($"{litPixels} pixels are lit.\n");
+        Console.WriteLine($"{litPixels} pixels are lit.");
     }
 
     public override void Part2()

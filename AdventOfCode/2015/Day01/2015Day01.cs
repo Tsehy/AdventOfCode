@@ -15,7 +15,7 @@
 
             int finalFloor = floorInstruction.Sum(c => c == '(' ? 1 : -1);
 
-            Console.WriteLine($"Final floor: {finalFloor}\n");
+            Console.WriteLine($"Final floor: {finalFloor}");
         }
 
         public override void Part2()
@@ -35,7 +35,7 @@
                 currentPosition++;
             }
 
-            Console.WriteLine($"First time entering basement: {currentPosition}. position\n");
+            Console.WriteLine($"First time entering basement: {currentPosition}. position");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace AdventOfCode
 
             int sum = Regex.Matches(Input[0], @"-?\d+").Sum(m => int.Parse(m.Value));
 
-            Console.WriteLine($"Sum of the numbers: {sum}\n");
+            Console.WriteLine($"Sum of the numbers: {sum}");
         }
 
         public override void Part2()
@@ -25,7 +25,7 @@ namespace AdventOfCode
             using var reader = new JsonTextReader(new StringReader(Input[0]));
             int sum = CountObjectValue(reader);
 
-            Console.WriteLine($"Sum of the numbers without red: {sum}\n");
+            Console.WriteLine($"Sum of the numbers without red: {sum}");
         }
 
         private static int CountObjectValue(JsonTextReader reader, JsonToken? type = null)

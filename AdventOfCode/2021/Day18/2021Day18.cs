@@ -19,7 +19,7 @@
                 sumAll.Simplify();
             }
 
-            Console.WriteLine($"The magnitude of the final sum: {sumAll.Magnitude()}\n");
+            Console.WriteLine($"The magnitude of the final sum: {sumAll.Magnitude()}");
         }
 
         public override void Part2()
@@ -37,7 +37,7 @@
                 }
             }
 
-            Console.WriteLine($"The largest magnitude of two numbers: {maxMagnitude}\n");
+            Console.WriteLine($"The largest magnitude of two numbers: {maxMagnitude}");
         }
 
         #region Private methods

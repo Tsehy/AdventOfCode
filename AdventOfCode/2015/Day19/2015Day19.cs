@@ -52,7 +52,7 @@ namespace AdventOfCode
                 }
             }
 
-            Console.WriteLine($"{created.Count} different molecules can be created.\n");
+            Console.WriteLine($"{created.Count} different molecules can be created.");
         }
 
         private IEnumerable<string> ReducedStates(string molecule)
@@ -101,7 +101,7 @@ namespace AdventOfCode
                 steps++;
             } 
 
-            Console.WriteLine($"Fewest number of replacements to create the medicine: {steps}\n");
+            Console.WriteLine($"Fewest number of replacements to create the medicine: {steps}");
         }
     }
 }

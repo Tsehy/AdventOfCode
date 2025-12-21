@@ -25,7 +25,7 @@ namespace AdventOfCode
                 visitedLocations.Add($"{currentX}-{currentY}");
             }
 
-            Console.WriteLine($"{visitedLocations.Count} number of houses were visited\n");
+            Console.WriteLine($"{visitedLocations.Count} number of houses were visited");
         }
 
         public override void Part2()
@@ -52,7 +52,7 @@ namespace AdventOfCode
                 visitedLocations.Add($"{robotX}-{robotY}");
             }
 
-            Console.WriteLine($"{visitedLocations.Count} number of houses were visited\n");
+            Console.WriteLine($"{visitedLocations.Count} number of houses were visited");
         }
 
         #region Private methods

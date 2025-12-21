@@ -20,7 +20,7 @@
                 .Sum()
             ;
 
-            Console.WriteLine($"Total size of the small directories: {totalFolderSize}\n");
+            Console.WriteLine($"Total size of the small directories: {totalFolderSize}");
         }
 
         public override void Part2()
@@ -31,7 +31,7 @@
 
             int smallestDirectoryToDelete = Convert.ToInt32(FolderSizes.Where(f => f >= spaceToFree).Min());
 
-            Console.WriteLine($"Smallest directory to delete: {smallestDirectoryToDelete}\n");
+            Console.WriteLine($"Smallest directory to delete: {smallestDirectoryToDelete}");
         }
 
         #region Private methods

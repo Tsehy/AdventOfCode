@@ -16,7 +16,7 @@
             // TODO cleaner solution
             int numberOfFullRangeContainingPairs = pairs.Where(p => p.Item1.Item1 <= p.Item2.Item1 && p.Item1.Item2 >= p.Item2.Item2 || p.Item1.Item1 >= p.Item2.Item1 && p.Item1.Item2 <= p.Item2.Item2).Count();
 
-            Console.WriteLine($"Ranges fully containing the other: {numberOfFullRangeContainingPairs}\n");
+            Console.WriteLine($"Ranges fully containing the other: {numberOfFullRangeContainingPairs}");
         }
 
         public override void Part2()
@@ -26,7 +26,7 @@
             // all - not overlapping
             int numberOfOverlappingPairs = pairs.Count - pairs.Where(p => p.Item1.Item2 < p.Item2.Item1 || p.Item1.Item1 > p.Item2.Item2).Count();
 
-            Console.WriteLine($"Panges overlapping: {numberOfOverlappingPairs}\n");
+            Console.WriteLine($"Panges overlapping: {numberOfOverlappingPairs}");
         }
 
         #region Private methods

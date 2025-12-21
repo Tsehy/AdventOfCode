@@ -17,7 +17,7 @@
         {
             base.Part1();
 
-            Console.WriteLine($"Maximum amount of calories carried: {Elves[0]}\n");
+            Console.WriteLine($"Maximum amount of calories carried: {Elves[0]}");
         }
 
         public override void Part2()
@@ -26,7 +26,7 @@
 
             int totalCalories = Elves.Take(3).Sum();
 
-            Console.WriteLine($"Maximum amount of calories carried by the top 3: {totalCalories}\n");
+            Console.WriteLine($"Maximum amount of calories carried by the top 3: {totalCalories}");
         }
 
         #region Private methods

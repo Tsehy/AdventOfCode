@@ -23,14 +23,14 @@
         {
             base.Part1();
 
-            Console.WriteLine($"Length of the shortest route: {FindRoute(true)}\n");
+            Console.WriteLine($"Length of the shortest route: {FindRoute(true)}");
         }
 
         public override void Part2()
         {
             base.Part2();
 
-            Console.WriteLine($"Length of the longest route: {FindRoute(false)}\n");
+            Console.WriteLine($"Length of the longest route: {FindRoute(false)}");
         }
 
         private int FindRoute(bool cheapest)

@@ -43,7 +43,7 @@ namespace AdventOfCode
             base.Part1();
 
             int minMana = MinimumMana();
-            Console.WriteLine($"Minimum mana needed to kill the boss: {minMana}\n");
+            Console.WriteLine($"Minimum mana needed to kill the boss: {minMana}");
         }
 
         public override void Part2()
@@ -51,7 +51,7 @@ namespace AdventOfCode
             base.Part2();
 
             int minMana = MinimumMana(true);
-            Console.WriteLine($"Minimum mana needed to kill the boss on hard mode: {minMana}\n");
+            Console.WriteLine($"Minimum mana needed to kill the boss on hard mode: {minMana}");
         }
     }
 }

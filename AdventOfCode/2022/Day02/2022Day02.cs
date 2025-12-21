@@ -15,7 +15,7 @@
 
             int totalScore = rounds.Select(r => WithWrongGuide(r)).Sum();
 
-            Console.WriteLine($"The score you would get following the incorrect guide: {totalScore}\n");
+            Console.WriteLine($"The score you would get following the incorrect guide: {totalScore}");
         }
 
         public override void Part2()
@@ -24,7 +24,7 @@
 
             int totalScore = rounds.Select(r => WithCorrectGuide(r)).Sum();
 
-            Console.WriteLine($"The score you would get following the correct guide: {totalScore}\n");
+            Console.WriteLine($"The score you would get following the correct guide: {totalScore}");
         }
 
         #region Private methods

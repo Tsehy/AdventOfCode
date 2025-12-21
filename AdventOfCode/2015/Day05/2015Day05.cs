@@ -34,7 +34,7 @@ namespace AdventOfCode
                 }
             }
 
-            Console.WriteLine($"Number of nice words: {niceCount}\n");
+            Console.WriteLine($"Number of nice words: {niceCount}");
         }
 
         public override void Part2()
@@ -54,7 +54,7 @@ namespace AdventOfCode
                 }
             }
 
-            Console.WriteLine($"Number of nice words: {niceCount}\n");
+            Console.WriteLine($"Number of nice words: {niceCount}");
         }
     }
 }

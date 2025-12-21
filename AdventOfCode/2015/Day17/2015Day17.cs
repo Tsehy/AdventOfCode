@@ -21,7 +21,7 @@ namespace AdventOfCode
         {
             base.Part1();
 
-            Console.WriteLine($"Total combinations of storing the eggnog: {FoundSolutions.Count}\n");
+            Console.WriteLine($"Total combinations of storing the eggnog: {FoundSolutions.Count}");
         }
 
         public override void Part2()
@@ -29,7 +29,7 @@ namespace AdventOfCode
             base.Part2();
 
             int min = FoundSolutions.Min(s => s.Count(c => c == ' '));
-            Console.WriteLine($"Total combinations of storing the eggnog using the least amount of containers: {FoundSolutions.Count(s => s.Count(c => c == ' ') == min)}\n");
+            Console.WriteLine($"Total combinations of storing the eggnog using the least amount of containers: {FoundSolutions.Count(s => s.Count(c => c == ' ') == min)}");
         }
 
         private void Reduce(int value)

@@ -20,7 +20,7 @@ public class _2016Day06 : _2016Day
         base.Part1();
 
         string message = string.Join("", Transposed.Select(cg => cg.GroupBy(c => c).MaxBy(c => c.Count())!.First()));
-        Console.WriteLine($"The most common letters: {message}\n");
+        Console.WriteLine($"The most common letters: {message}");
     }
 
     public override void Part2()
@@ -28,6 +28,6 @@ public class _2016Day06 : _2016Day
         base.Part2();
 
         string message = string.Join("", Transposed.Select(cg => cg.GroupBy(c => c).MinBy(c => c.Count())!.First()));
-        Console.WriteLine($"The least common letters: {message}\n");
+        Console.WriteLine($"The least common letters: {message}");
     }
 }

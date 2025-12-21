@@ -19,14 +19,14 @@ namespace AdventOfCode
         {
             base.Part1();
 
-            Console.WriteLine($"The score of the best mix: {GetBestMix()}\n");
+            Console.WriteLine($"The score of the best mix: {GetBestMix()}");
         }
 
         public override void Part2()
         {
             base.Part2();
 
-            Console.WriteLine($"The score of the best mix with 500 calories: {GetBestMix(500)}\n");
+            Console.WriteLine($"The score of the best mix with 500 calories: {GetBestMix(500)}");
         }
 
         private int GetBestMix(int? sumCalorie = null)
