@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 
 namespace AdventOfCode
 {
@@ -30,8 +31,12 @@ namespace AdventOfCode
                 }
             }
 
+            var sw = Stopwatch.StartNew();
             chosenDay?.Part1();
+            Console.WriteLine($"Enlapsed time: {sw.Elapsed}\n");
             chosenDay?.Part2();
+            Console.WriteLine($"Enlapsed time: {sw.Elapsed}\n");
+            sw.Stop();
         }
 
         #region Private methods
