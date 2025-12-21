@@ -34,6 +34,7 @@ namespace AdventOfCode
             var sw = Stopwatch.StartNew();
             chosenDay?.Part1();
             Console.WriteLine($"Enlapsed time: {sw.Elapsed}\n");
+            sw = Stopwatch.StartNew();
             chosenDay?.Part2();
             Console.WriteLine($"Enlapsed time: {sw.Elapsed}\n");
             sw.Stop();
