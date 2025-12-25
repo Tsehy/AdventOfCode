@@ -14,6 +14,7 @@ namespace AdventOfCode
             Console.WriteLine();
 
             Day? chosenDay = null;
+            var swTotal = Stopwatch.StartNew();
 
             try
             {
@@ -29,6 +30,7 @@ namespace AdventOfCode
                 {
                     Console.WriteLine("Wrong year or day!\nPlease use format: YYYY DD\n\n(Or the day is not yet compleated)");
                 }
+                return;
             }
 
             var sw = Stopwatch.StartNew();
@@ -37,7 +39,8 @@ namespace AdventOfCode
             sw = Stopwatch.StartNew();
             chosenDay?.Part2();
             Console.WriteLine($"Enlapsed time: {sw.Elapsed}\n");
-            sw.Stop();
+
+            Console.WriteLine($"\nTotal time: {swTotal.Elapsed}\n----------------------------");
         }
 
         #region Private methods
