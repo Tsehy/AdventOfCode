@@ -70,7 +70,7 @@ internal class Puzzle
     }
 }
 
-internal record struct PuzzleNode(Node node)
+internal struct PuzzleNode(Node node)
 {
     public int X { get; set; } = node.X;
     public int Y { get; set; } = node.Y;

@@ -41,7 +41,7 @@ public class _2016Day24 : _2016Day
         }
 
         var keys = Goals.Keys;
-        for (int i = 0; i < keys.Count + 1; i++)
+        for (int i = 0; i < keys.Count - 1; i++)
         {
             for (int j = i + 1; j < keys.Count; j++)
             {
@@ -129,7 +129,7 @@ public class _2016Day24 : _2016Day
     {
         base.Part1();
 
-        int minTsp = TspBranchAndBound(Edges, 0, Goals.Keys.Count);
+        int minTsp = TspBranchAndBound(Edges, 0, Goals.Count);
         Console.WriteLine($"The shortest path is: {minTsp}");
     }
 
@@ -137,7 +137,7 @@ public class _2016Day24 : _2016Day
     {
         base.Part2();
 
-        int minTsp = TspBranchAndBound(Edges, 0, Goals.Keys.Count, returnHome: true);
+        int minTsp = TspBranchAndBound(Edges, 0, Goals.Count, returnHome: true);
         Console.WriteLine($"The shortest path with returning to home is: {minTsp}");
     }
 }

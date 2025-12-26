@@ -15,7 +15,6 @@ public class _2016Day22 : _2016Day
 
         foreach (var node in Nodes)
         {
-            
             if (Nodes.All(n => n.Available < node.Used))
                 node.IsUnmoveable = true;
         }

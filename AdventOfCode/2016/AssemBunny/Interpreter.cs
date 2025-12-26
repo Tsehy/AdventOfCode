@@ -1,11 +1,15 @@
-﻿namespace AdventOfCode._2016.AssemBunny;
+﻿using System.Text;
+
+namespace AdventOfCode._2016.AssemBunny;
 
 internal enum CommandType
 {
-    inc, dec, cpy, jnz, tgl, mlt, nop
+    inc, dec, cpy, jnz, tgl, mlt, nop, @out
 }
 
 internal readonly record struct Command(CommandType Type, int? ValueParam1, string? KeyParam1, int? ValueParam2, string? KeyParam2, int? ValueParam3, string? Keyparam3);
+
+internal readonly record struct InterpreterState(int CommandPointer, string Registers, int outValue);
 
 internal static class CommandParser
 {
@@ -50,6 +54,7 @@ internal class Interpreter
 {
     public List<Command> Commands { get; set; }
     public Dictionary<string, int> Registers { get; set; } = [];
+    public bool IsClockSignal { get; private set; }
 
     public Interpreter(List<Command> commands)
     {
@@ -67,7 +72,7 @@ internal class Interpreter
             if (Commands[i].Type is not (CommandType.inc or CommandType.dec))
                 continue;
 
-            if (Commands[i + 1].Type is not (CommandType.inc or CommandType.dec) || Commands[i].Type == Commands[i+1].Type)
+            if (Commands[i + 1].Type is not (CommandType.inc or CommandType.dec) || Commands[i].Type == Commands[i + 1].Type)
                 continue;
 
             string? dec1Param = (Commands[i].Type == CommandType.dec) ? Commands[i].KeyParam1 : Commands[i + 1].KeyParam1;
@@ -94,14 +99,18 @@ internal class Interpreter
         }
     }
 
+    private string RegistersToString() => $"{Registers["a"]}{Registers["b"]}{Registers["c"]}{Registers["d"]}";
+
     public void ExecuteCommands()
     {
         List<Command> deepCopy = [.. Commands];
+        var states = new HashSet<InterpreterState>();
+        int prevOut = 1;
 
-        int nextCommandIndex = 0;
-        while (nextCommandIndex >= 0 && nextCommandIndex < deepCopy.Count)
+        int commandPointer = 0;
+        while (commandPointer >= 0 && commandPointer < deepCopy.Count)
         {
-            Command command = deepCopy[nextCommandIndex];
+            Command command = deepCopy[commandPointer];
             switch (command.Type)
             {
                 case CommandType.cpy:
@@ -126,13 +135,13 @@ internal class Interpreter
                     int param2 = (command.KeyParam2 != null) ? Registers[command.KeyParam2] : (command.ValueParam2 ?? 0);
                     if (param1 != 0)
                     {
-                        nextCommandIndex += param2;
+                        commandPointer += param2;
                         continue;
                     }
                     break;
 
                 case CommandType.tgl:
-                    int targetIndex = nextCommandIndex + ((command.KeyParam1 != null) ? Registers[command.KeyParam1] : (command.ValueParam1 ?? 0));
+                    int targetIndex = commandPointer + ((command.KeyParam1 != null) ? Registers[command.KeyParam1] : (command.ValueParam1 ?? 0));
                     if (targetIndex < deepCopy.Count && targetIndex >= 0)
                     {
                         var targetcommand = deepCopy[targetIndex];
@@ -168,11 +177,28 @@ internal class Interpreter
                     Registers[command.Keyparam3] += mult1 * mult2;
                     break;
 
+                case CommandType.@out:
+                    int outParam = (command.KeyParam1 != null) ? Registers[command.KeyParam1] : (command.ValueParam1 ?? 0);
+                    if (outParam is not (0 or 1) || prevOut == outParam)
+                    {
+                        IsClockSignal = false;
+                        return;
+                    }
+                    prevOut = outParam;
+
+                    var snapshot = new InterpreterState(commandPointer, RegistersToString(), outParam);
+                    if (!states.Add(snapshot))
+                    {
+                        IsClockSignal = true;
+                        return;
+                    }
+                    break;
+
                 case CommandType.nop:
                 default:
                     break;
             }
-            nextCommandIndex++;
+            commandPointer++;
         }
     }
 }
