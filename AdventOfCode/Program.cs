@@ -20,17 +20,19 @@ namespace AdventOfCode
             {
                 chosenDay = CreateDay(year, day);
             }
+            catch (Exception ex) when (ex.InnerException is FileNotFoundException)
+            {
+                Console.WriteLine($"Missing input file for {year}/{day}!");
+                return;
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine("Wrong year or day! Please use format: YYYY DD\n(Or the day is not yet compleated)");
+                return;
+            }
             catch (Exception ex)
             {
-                if (ex.InnerException is FileNotFoundException)
-                {
-                    Console.WriteLine($"Missing input file for {year}/{day}!");
-                }
-                else
-                {
-                    Console.WriteLine("Wrong year or day!\nPlease use format: YYYY DD\n\n(Or the day is not yet compleated)");
-                }
-                return;
+                Console.WriteLine(ex);
             }
 
             var sw = Stopwatch.StartNew();
