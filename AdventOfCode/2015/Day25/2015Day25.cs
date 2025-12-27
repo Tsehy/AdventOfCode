@@ -32,12 +32,12 @@ public partial class _2015Day25 : _2015Day
 
         // Stack overflow
         // ... but it worked in F#, thanks to tail-recursion
-        return n switch
-        {
-            int x when x <= 0 => 0,
-            1 => seed,
-            int x => Pseudo(seed * mult % mod, mult, mod, x - 1),
-        };
+        //return n switch
+        //{
+        //    int x when x <= 0 => 0,
+        //    1 => seed,
+        //    int x => Pseudo(seed * mult % mod, mult, mod, x - 1),
+        //};
     }
 
     public override void Part1()
