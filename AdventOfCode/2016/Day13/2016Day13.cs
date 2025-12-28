@@ -1,5 +1,5 @@
 ﻿namespace AdventOfCode._2016.Day13;
-
+    
 public class _2016Day13 : _2016Day
 {
     private readonly int Secret;
