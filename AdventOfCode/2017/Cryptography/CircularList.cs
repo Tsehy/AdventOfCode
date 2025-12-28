@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode._2017.Day10;
+﻿namespace AdventOfCode._2017.Cryptography;
 
 internal class CircularNode(int value, CircularNode next, CircularNode prev)
 {
