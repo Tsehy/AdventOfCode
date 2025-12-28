@@ -12,10 +12,10 @@ public class _2017Day10 : _2017Day
     {
         base.Part1();
 
-        List<int> lengths = [.. Input[0].Split(',').Select(int.Parse)];
-        var cList = new CircularList(256);
+        byte[] lengths = [.. Input[0].Split(',').Select(i => (byte)int.Parse(i))];
+        var cList = new CircularList();
         int position = 0, skipSize = 0;
-        KnotHasher.OneStep(cList, lengths, ref position, ref skipSize);
+        KnotHash.OneStep(cList, lengths, ref position, ref skipSize);
 
         Console.WriteLine($"The checksum is: {cList[0] * cList[1]}");
     }
@@ -24,7 +24,7 @@ public class _2017Day10 : _2017Day
     {
         base.Part2();
 
-        string cipher = KnotHasher.Encode(Input[0].Trim());
+        string cipher = Convert.ToHexString(KnotHash.Encode(Input[0].Trim())).ToLower();
         Console.WriteLine($"The Knot Hash is: {cipher}");
     }
 }

@@ -1,10 +1,9 @@
 ﻿namespace AdventOfCode._2017.Cryptography;
 
-internal class CircularNode(int value, CircularNode next, CircularNode prev)
+internal class CircularNode(byte value, CircularNode next)
 {
-    public int Value { get; set; } = value;
+    public byte Value { get; set; } = value;
     public CircularNode Next { get; set; } = next;
-    public CircularNode Previous { get; set; } = prev;
 }
 
 internal class CircularList
@@ -17,68 +16,48 @@ internal class CircularList
 
     public CircularList()
     {
+        // Add first
+        Nodes[0] = new CircularNode(0, null!);
+        Nodes[0].Next = Nodes[0];
+
+        for (byte i = 1; Nodes.Count < 256; i++)
+        {
+            var newNode = new CircularNode(i, First);
+            Last.Next = newNode;
+            Nodes[Nodes.Count] = newNode;
+        }
     }
 
-    public CircularList(int count) : base()
-    {
-        if (count <= 0)
-            return;
-
-        AddFirst(0);
-
-        for (int i = 1; i < count; i++)
-            Add(i);
-    }
-
-    public int this[int index] { get => Nodes[index].Value; set => Nodes[index].Value = value; }
-
-    public void Add(int item)
-    {
-        int newIndex = Nodes.Count;
-        var first = First;
-        var last = Last;
-        var newNode = new CircularNode(item, first, last);
-        Nodes[newIndex] = newNode;
-        first.Previous = last.Next = newNode;
-    }
-
-    public void AddFirst(int value)
-    {
-        if (Nodes.Count > 0)
-            throw new InvalidOperationException("List is not empty!");
-
-        Nodes[0] = new CircularNode(value, null!, null!);
-        Nodes[0].Next = Nodes[0].Previous = Nodes[0];
-    }
+    public byte this[int index] { get => Nodes[index].Value; }
 
     public void Twist(int index, int length)
     {
+        if (length == 1)
+            return;
+
         int startIndex = index % Nodes.Count;
         int endIndex = (startIndex + length - 1) % Nodes.Count;
 
         var startNode = Nodes[startIndex];
         var endNode = Nodes[endIndex];
 
-        var beforeNode = startNode.Previous;
+        var beforeNode = Nodes[(startIndex - 1 + Nodes.Count) % Nodes.Count];
         var afterNode = endNode.Next;
-
+        
         beforeNode.Next = endNode;
-        endNode.Next = beforeNode;
 
-        afterNode.Previous = startNode;
-        startNode.Previous = afterNode;
-
-        int reIndex = startIndex;
-        var current = endNode;
+        int reIndex = endIndex;
+        var current = startNode;
+        var next = afterNode;
         for (int i = 0; i < length; i++)
         {
-            (current.Previous, current.Next) = (current.Next, current.Previous);
+            var oldNext = current.Next;
+            current.Next = next;
             Nodes[reIndex] = current;
+            next = current;
+            current = oldNext;
 
-            reIndex = (reIndex + 1) % Nodes.Count;
-            current = current.Next;
+            reIndex = (reIndex - 1 + Nodes.Count) % Nodes.Count;
         }
     }
-
-    public List<int> ToList() => [.. Nodes.Values.Select(i => i.Value)];
 }
