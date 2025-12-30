@@ -20,7 +20,7 @@ namespace AdventOfCode
             {
                 chosenDay = CreateDay(year, day);
             }
-            catch (Exception ex) when (ex.InnerException is FileNotFoundException)
+            catch (Exception ex) when (ex.InnerException is FileNotFoundException or DirectoryNotFoundException)
             {
                 Console.WriteLine($"Missing input file for {year}/{day}!");
                 return;
